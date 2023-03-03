@@ -11,10 +11,7 @@ ENV PIP_DEFAULT_TIMEOUT=100
 RUN apt-get update
 RUN apt-get install -y python3 python3-pip python-dev build-essential python3-venv
 
-RUN mkdir -p /code
-ADD . /code
-WORKDIR /code
-
-RUN pip3 install -r requirements.txt
+ADD requirements.txt /tmp/requirements.txt
+RUN pip3 install -r /tmp/requirements.txt
 
 CMD ["bash"]

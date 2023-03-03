@@ -13,13 +13,15 @@ services:
 
   chatgpt_telegram_bot:
     container_name: chatgpt_telegram_bot
-    command: python3 bot/bot.py
+    command: python3 code/bot/bot.py
     restart: always
     build:
       context: "."
       dockerfile: Dockerfile
     depends_on:
       - mongo
+    volumes:
+      - $PWD:/code
 
   mongo_express:
     container_name: mongo-express
